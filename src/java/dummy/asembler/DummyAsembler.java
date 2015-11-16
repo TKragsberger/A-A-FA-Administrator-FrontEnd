@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package dummy.asembler;
-//Lets test this
+
 import contract.dto.EmployeeDetail;
 import contract.dto.EmployeeSummary;
 import contract.dto.LargeShipDetail;
