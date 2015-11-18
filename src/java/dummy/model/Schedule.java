@@ -5,7 +5,10 @@
  */
 package dummy.model;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -14,6 +17,15 @@ import java.util.Date;
  * Passengers tells the amount of passengers there are onboard.
  */
 public class Schedule {
+    private static final Map<String, Schedule> items = new HashMap<>();
+    
+    public static Schedule find(long id){
+        return items.get(id+"");
+    }
+    
+    public static Collection<Schedule> list(){
+        return items.values();
+    }
     private int id;
     private int routeId;
     private int capacity;
@@ -28,6 +40,7 @@ public class Schedule {
         this.passengers = passengers;
         this.shipId = shipId;
         this.date = date;
+        items.put(id+"", this);
     }
 
     public int getPassengers() {

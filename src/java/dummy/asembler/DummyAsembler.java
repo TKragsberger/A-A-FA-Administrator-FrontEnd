@@ -40,7 +40,7 @@ import java.util.Collection;
 public class DummyAsembler {
     
     public static EmployeeSummary createEmployeeSummary(Employee employee){
-        return new EmployeeSummary(employee.getFirstName(), employee.getLastName(), employee.getEmail(), employee.getPosition());
+        return new EmployeeSummary(employee.getId(), employee.getFirstName(), employee.getLastName(), employee.getEmail(), employee.getPosition());
     }
     
     public static Collection<EmployeeSummary> createEmployeeSummaries(Collection<Employee> employees){
@@ -56,7 +56,7 @@ public class DummyAsembler {
     } 
     
     public static ScheduleSummary createScheduleSummary (Schedule schedule){
-        return new ScheduleSummary(schedule.getRouteId(), schedule.getCapacity(), schedule.getPassengers(), schedule.getShipId());
+        return new ScheduleSummary(schedule.getId(), schedule.getRouteId(), schedule.getCapacity(), schedule.getPassengers(), schedule.getShipId());
     }
     
     public static Collection<ScheduleSummary> cretaScheduleSummaries(Collection<Schedule> schedules){
@@ -80,7 +80,7 @@ public class DummyAsembler {
     }
     
     public static ReservationSummary createReservationSummary(Reservation reservation){
-        return new ReservationSummary(reservation.getDate(), reservation.getTicketType(), reservation.getFirstName(), reservation.getLastName(), reservation.getEmail(), reservation.getRouteId());
+        return new ReservationSummary(reservation.getId(), reservation.getDate(), reservation.getTicketType(), reservation.getFirstName(), reservation.getLastName(), reservation.getEmail(), reservation.getRouteId());
     }
     
     public static Collection<ReservationSummary> createReservationSummaries(Collection<Reservation> reservations){
@@ -96,7 +96,7 @@ public class DummyAsembler {
     }
     
     public static WeatherDetail createWeatherDetail(Weather weather){
-        return new WeatherDetail(weather.getWeather(), weather.getDate());
+        return new WeatherDetail(weather.getDate(), weather.getWeather());
     }
     
     public static ShipDetail createShipDetail(Ship ship){

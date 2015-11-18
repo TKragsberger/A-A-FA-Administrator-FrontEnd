@@ -5,7 +5,10 @@
  */
 package dummy.model;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The reservation detail gives a detailed describtion of a reservation where 
@@ -13,7 +16,15 @@ import java.util.Date;
  * It also contains a date and a route the passenger has taken.
  */
 public class Reservation {
+    private static final Map<String, Reservation> items = new HashMap<>();
     
+    public static Reservation find(long id){
+        return items.get(id+"");
+    }
+    
+    public static Collection<Reservation> list(){
+        return items.values();
+    }
     private long id;
     private Date date;
     private double price;
@@ -32,6 +43,7 @@ public class Reservation {
         this.lastName = lastName;
         this.email = email;
         this.routeId = routeId;
+        items.put(id+"", this);
     }
 
     public long getId() {

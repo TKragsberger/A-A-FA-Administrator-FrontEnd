@@ -5,11 +5,25 @@
  */
 package dummy.model;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * The employee detail tells about an employees position in the company and the 
  * salery he or she gets.
  */
 public class Employee {
+    private static final Map<String, Employee> items = new HashMap<>();
+    
+    public static Employee find(long id){
+        return items.get(id+"");
+    }
+    
+    public static Collection<Employee> list(){
+        return items.values();
+    }
+    
     private String firstName;
     private String lastName;
     private String email;
@@ -24,6 +38,7 @@ public class Employee {
         this.salery = salery;
         this.id = id;
         this.position = position;
+        items.put(id+"", this);
     }
 
     public String getFirstName() {

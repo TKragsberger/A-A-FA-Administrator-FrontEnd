@@ -5,12 +5,25 @@
  */
 package dummy.model;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * The price detail will be used for creating a table of alle the prices. 
  * the passenger type will tell if the passenger is in a car, bus og is walking onboard,
  * how many passenger there are in a car
  */
 public class Price {
+    private static final Map<String, Price> items = new HashMap<>();
+    
+    public static Price find(long id){
+        return items.get(id+"");
+    }
+    
+    public static Collection<Price> list(){
+        return items.values();
+    }
     private String passengerType;
     private int numberOfPassengers;
     private double price;
@@ -21,6 +34,7 @@ public class Price {
         this.numberOfPassengers = numberOfPassengers;
         this.price = price;
         this.id = id;
+        items.put(id+"", this);
     }
 
     public String getPassengerType() {

@@ -31,8 +31,6 @@ import org.junit.Test;
 public class DummyDataRepositoryTest {
 
     private DummyDataRepository ddr;
-    private EmployeeDetail employee1;
-    private EmployeeDetail employee2;
     private PriceDetail updatedPrice;
     
     public DummyDataRepositoryTest() {
@@ -50,42 +48,7 @@ public class DummyDataRepositoryTest {
     public void setUp() {
 
         ddr = new DummyDataRepository();
-        Date date1 = parseDate("2014-02-14");
-        Date date2 = parseDate("2014-02-23");
-        //EmployeeDetail(String firstName, String lastName, String email, double salery, long id, String position)
-        employee1 = new EmployeeDetail("Hans", "Hansen", "hans@hansen", 30000.00, 1, "administrator");
-        employee2 = new EmployeeDetail("Peter", "Pedersen", "peter@pedersen", 20000.00, 2, "it support");
-        //PriceDetail(String passengerType, int numberOfPassengers, double price)
-        PriceDetail walkingPassenger = new PriceDetail(1, "walking", 1, 125.00);
-        PriceDetail smallCar = new PriceDetail(2, "smallCar", 1, 250.00);
         updatedPrice = new PriceDetail(1, "walking", 1, 100);
-        //ReservationDetail(long id, Date date, double price, String ticketType, String firstName, String lastName, String email, int routeId)
-        ReservationDetail reservation1 = new ReservationDetail(1, date1, 375.00, "walking", "Hans", "Hansen", "hans@hansen", 1);
-        ReservationDetail reservation2 = new ReservationDetail(2, date2, 750.00, "smallCar", "Peter", "Pedersen", "peter@pedersen", 2);
-        ReservationDetail reservation3 = new ReservationDetail(3, date1, 750.00, "smallCar", "Niels", "Nielsen", "niels@nielsen", 1);
-        //ScheduleDetail(int id, int routeId, int capacity, int passengers, int shipId, Date date)
-        ScheduleDetail schedule1 = new ScheduleDetail(300, 1, 1000, 867, 1, date1);
-        ScheduleDetail schedule2 = new ScheduleDetail(354, 2, 3000, 2547, 3, date2);
-        //WeatherDetail(String weather, Date date)
-        WeatherDetail weather1 = new WeatherDetail("sunny", date1);
-        WeatherDetail weather2 = new WeatherDetail("raining", date2);
-        ArrayList<EmployeeDetail> employees = new ArrayList();
-        ArrayList<PriceDetail> prices = new ArrayList();
-        ArrayList<ReservationDetail> reservations = new ArrayList();
-        ArrayList<ScheduleDetail> schedules = new ArrayList();
-        ArrayList<WeatherDetail> weatherSchedule = new ArrayList();
-
-        employees.add(employee1);
-        employees.add(employee2);
-        prices.add(walkingPassenger);
-        prices.add(smallCar);
-        reservations.add(reservation1);
-        reservations.add(reservation2);
-        reservations.add(reservation3);
-        schedules.add(schedule1);
-        schedules.add(schedule2);
-        weatherSchedule.add(weather1);
-        weatherSchedule.add(weather2);
     }
 
     @After
@@ -134,7 +97,9 @@ public class DummyDataRepositoryTest {
     
     @Test
     public void testRemoveEmployee(){
-        boolean employeeRemoved = ddr.removeEmployee(employee1);
+        EmployeeDetail employee = new EmployeeDetail("Niels", "Nielsen", "niels@nielsen.com", 22000.00, 3, "it support");
+        ddr.createEmployee(employee);
+        boolean employeeRemoved = ddr.removeEmployee(employee);
         Assert.assertTrue(employeeRemoved);
     }
     
@@ -149,6 +114,7 @@ public class DummyDataRepositoryTest {
         EmployeeDetail employee = new EmployeeDetail("Niels", "Nielsen", "niels@nielsen.com", 22000.00, 3, "it support");
         boolean employeeAdded = ddr.createEmployee(employee);
         Assert.assertTrue(employeeAdded);
+        ddr.removeEmployee(employee);
     }
     
     @Test

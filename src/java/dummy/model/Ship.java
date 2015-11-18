@@ -6,13 +6,25 @@
 package dummy.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Thomas
  */
 public abstract class Ship implements Serializable{
+    private static final Map<String, Ship> items = new HashMap<>();
+    
+    public static Ship find(long id){
+        return items.get(id+"");
+    }
+    
+    public static Collection<Ship> list(){
+        return items.values();
+    }
     private long shipId;
     private int passengerCapacity;
     private String name;
@@ -23,6 +35,7 @@ public abstract class Ship implements Serializable{
         this.passengerCapacity = passengerCapacity;
         this.name = name;
         this.lastMaintenance = lastMaintenance;
+        items.put(shipId+"", this);
     }
 
     public long getShipId() {
