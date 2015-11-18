@@ -11,6 +11,8 @@ import contract.dto.reservation.ReservationDetail;
 import contract.dto.reservation.ReservationSummary;
 import contract.dto.schedule.ScheduleDetail;
 import contract.dto.schedule.ScheduleSummary;
+import contract.dto.ship.ShipDetail;
+import contract.dto.ship.ShipSummary;
 import contract.dto.weather.WeatherDetail;
 import dummy.control.DummyDataRepository;
 import static dummy.control.DummyDataRepository.parseDate;
@@ -145,10 +147,15 @@ public class DummyDataRepositoryTest {
         Assert.assertTrue(employeeUpdated);
     }
     
-//    @Test
-//    public void testUpdateShipDeck(){
-//        Date date = parseDate("2014-02-23");
-//        boolean shipDeckChanged = ddr.updateShipDeck(date, "upper");
-//        Assert.assertTrue(shipDeckChanged);
-//    }
+    @Test
+    public void testGetShipDetail(){
+        ShipDetail sd = ddr.getShipDetail(2);
+        Assert.assertEquals("SS Charlotte", sd.getName());
+    }
+    
+    @Test
+    public void testGetShips(){
+        Collection<ShipSummary> ss = ddr.getShips();
+        Assert.assertEquals(3, ss.size());
+    }
 }

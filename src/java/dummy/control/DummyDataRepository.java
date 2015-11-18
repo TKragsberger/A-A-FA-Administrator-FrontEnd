@@ -18,10 +18,13 @@ import contract.dto.ship.ShipSummary;
 import contract.dto.weather.WeatherDetail;
 import dummy.asembler.DummyAsembler;
 import dummy.model.Employee;
+import dummy.model.LargeShip;
+import dummy.model.MediumShip;
 import dummy.model.Price;
 import dummy.model.Reservation;
 import dummy.model.Schedule;
 import dummy.model.Ship;
+import dummy.model.SmallShip;
 import dummy.model.Weather;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,6 +43,7 @@ public class DummyDataRepository implements DataRepository {
     public DummyDataRepository() {
         Date date1 = parseDate("2014-02-14");
         Date date2 = parseDate("2014-02-23");
+        Date date3 = parseDate("2015-03-15");
         //EmployeeDetail(String firstName, String lastName, String email, double salery, long id, String position)
         new Employee("Hans", "Hansen", "hans@hansen", 30000.00, 1, "administrator");
         new Employee("Peter", "Pedersen", "peter@pedersen", 20000.00, 2, "it support");
@@ -56,6 +60,12 @@ public class DummyDataRepository implements DataRepository {
         //WeatherDetail(String weather, Date date)
         new Weather("sunny", date1);
         new Weather("raining", date2);
+        //SmallShip(long shipId, int passengerCapacity, String name, Date lastMaintenance)
+        new SmallShip(1, 1000, "SS Martha", date3);
+        //MediumShip(long shipId, int passengerCapacity, String name, Date lastMaintenance, int carCapacity)
+        new MediumShip(2, 1500, "SS Charlotte", date3, 150);
+        //LargeShip(long shipId, int passengerCapacity, String name, Date lastMaintenace, String currentDeckPosition, int carCapacity, int largeVehicleCapacity)
+        new LargeShip(3, 2500, "SS Karoline", date3, "Upper", 200, 50);
     }
 
     public static Date parseDate(String date) {
@@ -185,15 +195,6 @@ public class DummyDataRepository implements DataRepository {
         }
         return false;
     }
-
-//    @Override
-//    public boolean updateShipDeck(Date date, String changeTo) {
-//        for(Schedule schedule : schedules){
-//            if(schedule.getDate().equals(date) && schedule.getShipId() == 3)
-//                return true;
-//        }
-//        return false;
-//    }
 
     @Override
     public ShipDetail getShipDetail(int id) {
