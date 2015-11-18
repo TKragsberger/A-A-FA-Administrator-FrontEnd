@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-import contract.dto.EmployeeDetail;
-import contract.dto.EmployeeSummary;
-import contract.dto.PriceDetail;
-import contract.dto.ReservationDetail;
-import contract.dto.ReservationSummary;
-import contract.dto.ScheduleDetail;
-import contract.dto.ScheduleSummary;
-import contract.dto.WeatherDetail;
+import contract.dto.employee.EmployeeDetail;
+import contract.dto.employee.EmployeeSummary;
+import contract.dto.price.PriceDetail;
+import contract.dto.reservation.ReservationDetail;
+import contract.dto.reservation.ReservationSummary;
+import contract.dto.schedule.ScheduleDetail;
+import contract.dto.schedule.ScheduleSummary;
+import contract.dto.weather.WeatherDetail;
 import dummy.control.DummyDataRepository;
 import static dummy.control.DummyDataRepository.parseDate;
 import java.util.ArrayList;
