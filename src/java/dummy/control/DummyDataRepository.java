@@ -13,6 +13,8 @@ import contract.dto.employee.EmployeeSummary;
 import contract.dto.price.PriceDetail;
 import contract.dto.reservation.ReservationDetail;
 import contract.dto.reservation.ReservationSummary;
+import contract.dto.route.RouteDetail;
+import contract.dto.route.RouteSummary;
 import contract.dto.schedule.ScheduleDetail;
 import contract.dto.schedule.ScheduleSummary;
 import contract.dto.ship.ShipDetail;
@@ -25,6 +27,7 @@ import dummy.model.LargeShip;
 import dummy.model.MediumShip;
 import dummy.model.Price;
 import dummy.model.Reservation;
+import dummy.model.Route;
 import dummy.model.Schedule;
 import dummy.model.Ship;
 import dummy.model.SmallShip;
@@ -73,6 +76,8 @@ public class DummyDataRepository implements DataRepository {
         new Department(1, "HR", "This is the HR Department");
         new Department(2, "ADM", "This is the Administation Department");
         new Department(3, "IT", "This is the IT department");
+        //Route(long id, String startDestination, String endDesitination, int travelTime)
+        new Route(1, "a", "b", 30);
     }
 
     public static Date parseDate(String date) {
@@ -230,6 +235,21 @@ public class DummyDataRepository implements DataRepository {
     @Override
     public Collection<DepartmentSummary> getDepartmentSummaries() {
         return asembler.createDepartmentSummaries(Department.list());
+    }
+
+    @Override
+    public RouteDetail getRouteDetail(long id) {
+        for(Route route : Route.list()){
+            if(route.getId() == id){
+                return asembler.createRouteDetail(route);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Collection<RouteSummary> getRouteSummaries() {
+        return asembler.createRouteSummaries(Route.list());
     }
 
 }

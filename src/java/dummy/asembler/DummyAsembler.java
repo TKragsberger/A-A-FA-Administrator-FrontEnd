@@ -16,6 +16,8 @@ import contract.dto.ship.MediumShipSummary;
 import contract.dto.price.PriceDetail;
 import contract.dto.reservation.ReservationDetail;
 import contract.dto.reservation.ReservationSummary;
+import contract.dto.route.RouteDetail;
+import contract.dto.route.RouteSummary;
 import contract.dto.schedule.ScheduleDetail;
 import contract.dto.schedule.ScheduleSummary;
 import contract.dto.ship.ShipDetail;
@@ -29,6 +31,7 @@ import dummy.model.LargeShip;
 import dummy.model.MediumShip;
 import dummy.model.Price;
 import dummy.model.Reservation;
+import dummy.model.Route;
 import dummy.model.Schedule;
 import dummy.model.Ship;
 import dummy.model.SmallShip;
@@ -152,5 +155,21 @@ public class DummyAsembler {
             ds.add(createDepartmentSummary(department));
         }
         return ds;
+    }
+    
+    public static RouteDetail createRouteDetail(Route route){
+        return new RouteDetail(route.getId(), route.getStartDestination(), route.getEndDesitination(), route.getTravelTime());
+    }
+    
+    public static RouteSummary createRouteSummary(Route route){
+        return new RouteSummary(route.getStartDestination()+" to "+route.getEndDesitination(), route.getId());
+    }
+    
+    public static Collection<RouteSummary> createRouteSummaries(Collection<Route> routes){
+        Collection<RouteSummary> rs = new ArrayList<>();
+        for(Route route : routes){
+            rs.add(createRouteSummary(route));
+        }
+        return rs;
     }
 }

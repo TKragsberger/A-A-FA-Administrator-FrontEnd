@@ -172,4 +172,5 @@ public class DummyDataRepositoryTest {
         Collection<DepartmentSummary> ds = ddr.getDepartmentSummaries();
         Assert.assertEquals(3, ds.size());
     }
+    
 }
