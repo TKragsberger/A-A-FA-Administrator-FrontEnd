@@ -69,4 +69,8 @@ public class Department {
     public void setEmployees(Collection<Employee> employees) {
         this.employees = employees;
     }
+    
+    public void addEmployee(Employee employee){
+        employees.add(employee);
+    }
 }
