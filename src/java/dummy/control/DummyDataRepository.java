@@ -6,6 +6,8 @@
 package dummy.control;
 
 import contract.DataRepository;
+import contract.dto.department.DepartmentDetail;
+import contract.dto.department.DepartmentSummary;
 import contract.dto.employee.EmployeeDetail;
 import contract.dto.employee.EmployeeSummary;
 import contract.dto.price.PriceDetail;
@@ -17,6 +19,7 @@ import contract.dto.ship.ShipDetail;
 import contract.dto.ship.ShipSummary;
 import contract.dto.weather.WeatherDetail;
 import dummy.asembler.DummyAsembler;
+import dummy.model.Department;
 import dummy.model.Employee;
 import dummy.model.LargeShip;
 import dummy.model.MediumShip;
@@ -66,6 +69,10 @@ public class DummyDataRepository implements DataRepository {
         new MediumShip(2, 1500, "SS Charlotte", date3, 150);
         //LargeShip(long shipId, int passengerCapacity, String name, Date lastMaintenace, String currentDeckPosition, int carCapacity, int largeVehicleCapacity)
         new LargeShip(3, 2500, "SS Karoline", date3, "Upper", 200, 50);
+        //Department(long id, String name, String description)
+        new Department(1, "HR", "This is the HR Department");
+        new Department(2, "ADM", "This is the Administation Department");
+        new Department(3, "IT", "This is the IT department");
     }
 
     public static Date parseDate(String date) {
@@ -83,7 +90,7 @@ public class DummyDataRepository implements DataRepository {
     }
 
     @Override
-    public EmployeeDetail getEmployee(int id) {
+    public EmployeeDetail getEmployee(long id) {
         for(Employee employee : Employee.list()){
             if(employee.getId() == id)
                 return asembler.createEmployeeDetail(employee);
@@ -106,7 +113,7 @@ public class DummyDataRepository implements DataRepository {
     }
 
     @Override
-    public ScheduleDetail getScheduleDetail(Date date, int routeId) {
+    public ScheduleDetail getScheduleDetail(Date date, long routeId) {
         for(Schedule schedule : Schedule.list()){
             if(schedule.getDate().equals(date) && schedule.getRouteId() == routeId)
                 return asembler.createScheduleDetail(schedule);
@@ -164,7 +171,7 @@ public class DummyDataRepository implements DataRepository {
     }
 
     @Override
-    public ReservationDetail getReservation(int id) {
+    public ReservationDetail getReservation(long id) {
         for(Reservation reservation : Reservation.list()){
             if(reservation.getId() == id)
                 return asembler.createReservationDetail(reservation);
@@ -197,7 +204,7 @@ public class DummyDataRepository implements DataRepository {
     }
 
     @Override
-    public ShipDetail getShipDetail(int id) {
+    public ShipDetail getShipDetail(long id) {
         for(Ship ship : Ship.list()){
             if(ship.getShipId() == id)
                 return asembler.createShipDetail(ship);
@@ -208,6 +215,21 @@ public class DummyDataRepository implements DataRepository {
     @Override
     public Collection<ShipSummary> getShips() {
         return asembler.createShipSummaries(Ship.list());
+    }
+
+    @Override
+    public DepartmentDetail getDepartmentDetail(long id) {
+        for(Department department : Department.list()){
+            if(department.getId() == id){
+                return asembler.createDepartmentDetail(department);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Collection<DepartmentSummary> getDepartmentSummaries() {
+        return asembler.createDepartmentSummaries(Department.list());
     }
 
 }

@@ -5,6 +5,8 @@
  */
 package dummy.asembler;
 
+import contract.dto.department.DepartmentDetail;
+import contract.dto.department.DepartmentSummary;
 import contract.dto.employee.EmployeeDetail;
 import contract.dto.employee.EmployeeSummary;
 import contract.dto.ship.LargeShipDetail;
@@ -21,6 +23,7 @@ import contract.dto.ship.ShipSummary;
 import contract.dto.ship.SmallShipDetail;
 import contract.dto.ship.SmallShipSummary;
 import contract.dto.weather.WeatherDetail;
+import dummy.model.Department;
 import dummy.model.Employee;
 import dummy.model.LargeShip;
 import dummy.model.MediumShip;
@@ -133,5 +136,21 @@ public class DummyAsembler {
             sd.add(createShipSummary(ship));
         }
         return sd;
+    }
+    
+    public static DepartmentDetail createDepartmentDetail(Department department){
+        return new DepartmentDetail(department.getId(), department.getName(), department.getDescription());
+    }
+    
+    public static DepartmentSummary createDepartmentSummary(Department deparment){
+        return new DepartmentSummary(deparment.getId(), deparment.getDescription());
+    }
+    
+    public static Collection<DepartmentSummary> createDepartmentSummaries(Collection<Department> departments){
+        Collection<DepartmentSummary> ds = new ArrayList<>();
+        for(Department department : departments){
+            ds.add(createDepartmentSummary(department));
+        }
+        return ds;
     }
 }

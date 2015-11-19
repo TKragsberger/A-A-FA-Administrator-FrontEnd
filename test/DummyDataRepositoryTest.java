@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import contract.dto.department.DepartmentDetail;
+import contract.dto.department.DepartmentSummary;
 import contract.dto.employee.EmployeeDetail;
 import contract.dto.employee.EmployeeSummary;
 import contract.dto.price.PriceDetail;
@@ -120,7 +122,7 @@ public class DummyDataRepositoryTest {
     }
     
     @Test
-    public void testGetReservations(){
+    public void testGetReservationSummary(){
         Date date = parseDate("2014-02-14");
         Collection<ReservationSummary> rs = new ArrayList<>();
         rs = ddr.getReservations(date);
@@ -154,8 +156,20 @@ public class DummyDataRepositoryTest {
     }
     
     @Test
-    public void testGetShips(){
+    public void testGetShipSummary(){
         Collection<ShipSummary> ss = ddr.getShips();
         Assert.assertEquals(3, ss.size());
+    }
+    
+    @Test
+    public void testGetDepartmentDetail(){
+        DepartmentDetail dd = ddr.getDepartmentDetail(2);
+        Assert.assertEquals("ADM", dd.getName());
+    }
+    
+    @Test
+    public void testGetDepartmentSummaries(){
+        Collection<DepartmentSummary> ds = ddr.getDepartmentSummaries();
+        Assert.assertEquals(3, ds.size());
     }
 }
