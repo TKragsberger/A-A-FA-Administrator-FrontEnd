@@ -11,6 +11,8 @@ import contract.dto.employee.EmployeeSummary;
 import contract.dto.price.PriceDetail;
 import contract.dto.reservation.ReservationDetail;
 import contract.dto.reservation.ReservationSummary;
+import contract.dto.route.RouteDetail;
+import contract.dto.route.RouteSummary;
 import contract.dto.schedule.ScheduleDetail;
 import contract.dto.schedule.ScheduleSummary;
 import contract.dto.ship.ShipDetail;
@@ -173,4 +175,15 @@ public class DummyDataRepositoryTest {
         Assert.assertEquals(3, ds.size());
     }
     
+    @Test
+    public void testGetRouteDetail(){
+        RouteDetail rd = ddr.getRouteDetail(1);
+        Assert.assertEquals(1, rd.getId());
+    }
+    
+    @Test
+    public void testGetRouteSummaries(){
+        Collection<RouteSummary> rs = ddr.getRouteSummaries();
+        Assert.assertEquals(2, rs.size());
+    }
 }

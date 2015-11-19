@@ -77,7 +77,8 @@ public class DummyDataRepository implements DataRepository {
         new Department(2, "ADM", "This is the Administation Department");
         new Department(3, "IT", "This is the IT department");
         //Route(long id, String startDestination, String endDesitination, int travelTime)
-        new Route(1, "a", "b", 30);
+        new Route(1, "a", "b", 40);
+        new Route(2, "a", "c", 20);
     }
 
     public static Date parseDate(String date) {
