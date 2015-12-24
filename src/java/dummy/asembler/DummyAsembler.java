@@ -7,6 +7,8 @@ package dummy.asembler;
 
 import contract.dto.department.DepartmentDetail;
 import contract.dto.department.DepartmentSummary;
+import contract.dto.departure.DepartureDetail;
+import contract.dto.departure.DepartureSummary;
 import contract.dto.employee.EmployeeDetail;
 import contract.dto.employee.EmployeeSummary;
 import contract.dto.ship.LargeShipDetail;
@@ -26,6 +28,7 @@ import contract.dto.ship.SmallShipDetail;
 import contract.dto.ship.SmallShipSummary;
 import contract.dto.weather.WeatherDetail;
 import dummy.model.Department;
+import dummy.model.Departure;
 import dummy.model.Employee;
 import dummy.model.LargeShip;
 import dummy.model.MediumShip;
@@ -158,7 +161,7 @@ public class DummyAsembler {
     }
     
     public static RouteDetail createRouteDetail(Route route){
-        return new RouteDetail(route.getId(), route.getStartDestination(), route.getEndDesitination(), route.getTravelTime());
+        return new RouteDetail(route.getId(), route.getStartDestination(), route.getEndDesitination(), route.getPrice(), route.getTravelTime());
     }
     
     public static RouteSummary createRouteSummary(Route route){
@@ -171,5 +174,22 @@ public class DummyAsembler {
             rs.add(createRouteSummary(route));
         }
         return rs;
+    }
+    
+    public static DepartureSummary createDepartureSummary(Departure departure){
+        return new DepartureSummary(departure.getId(), departure.getDate(), departure.getRouteId());
+    }
+    
+    public static Collection<DepartureSummary> createDepartureSummaries(Collection<Departure> departures){
+        Collection<DepartureSummary> ds = new ArrayList<>();
+        for(Departure departure : departures){
+            ds.add(createDepartureSummary(departure));
+        }
+        return ds;
+    }
+    
+    public static DepartureDetail createDepartureDetail(Departure departure){
+        Collection<ReservationSummary> rs = createReservationSummaries(departure.getReservations());
+        return new DepartureDetail(departure.getId(), departure.getDate(), departure.getRouteId(), rs, departure.getCurrentPassengers(), departure.getCurrentVehicles(), departure.getCurrentLargeVehicles());
     }
 }

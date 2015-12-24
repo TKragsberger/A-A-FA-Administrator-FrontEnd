@@ -27,12 +27,14 @@ public class Route {
     private long id;
     private String startDestination;
     private String endDesitination;
+    private double price;
     private int travelTime;
 
-    public Route(long id, String startDestination, String endDesitination, int travelTime) {
+    public Route(long id, String startDestination, String endDesitination, double price, int travelTime) {
         this.id = id;
         this.startDestination = startDestination;
         this.endDesitination = endDesitination;
+        this.price = price;
         this.travelTime = travelTime;
         items.put(id+"", this);
     }
@@ -59,6 +61,14 @@ public class Route {
 
     public void setEndDesitination(String endDesitination) {
         this.endDesitination = endDesitination;
+    }
+    
+    public double getPrice(){
+        return price;
+    }
+    
+    public void setPrice(double price){
+        this.price = price;
     }
 
     public int getTravelTime() {
