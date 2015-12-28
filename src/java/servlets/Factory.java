@@ -25,9 +25,9 @@ public class Factory {
     private Factory(){
         commands.put("start-up", new StartUpCommand("/welcome-page.jsp"));
         commands.put("main", new TargetCommand("/administrator/main-page.jsp"));
-        commands.put("view-ship", new ShipDetailCommand("/administrator/ship-detail-page"));
-        commands.put("view-depature", new DepartureDetailCommand("/administator/departure-detail-page"));
-        commands.put("view-reservations", new ListReservationsCommand("/administrator/reservation-summary-page"));
+        commands.put("view-ship", new ShipDetailCommand("/administrator/ship-detail-page.jsp"));
+        commands.put("view-depature", new DepartureDetailCommand("/administrator/departure-detail-page.jsp"));
+        commands.put("view-reservations", new ListReservationsCommand("/administrator/reservation-summary-page.jsp"));
     }
     
     public DummyDataRepository getDataRepository() {

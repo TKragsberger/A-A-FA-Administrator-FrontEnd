@@ -16,9 +16,9 @@ public class DepartureDetailCommand extends TargetCommand{
     
     @Override
     public String execute(HttpServletRequest request) {
-        int departureId = Integer.parseInt(request.getParameter("id"));
-        DepartureDetail departure = Factory.getInstance().getDataRepository().getDepartureDetail(departureId);
-        request.setAttribute("departure", departure);
+//        int departureId = Integer.parseInt(request.getParameter("id"));
+//        DepartureDetail departure = Factory.getInstance().getDataRepository().getDepartureDetail(departureId);
+//        request.setAttribute("departure", departure);
         return super.execute(request);
     }
     

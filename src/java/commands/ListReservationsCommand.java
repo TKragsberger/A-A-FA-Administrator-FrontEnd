@@ -18,14 +18,14 @@ public class ListReservationsCommand extends TargetCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String stringDate = request.getParameter("date");
-        Date date;
-        try {
-            date = new SimpleDateFormat("yyyy-mm-dd").parse(stringDate);
-        } catch (ParseException e) {
-            date = null;
-        }
-        request.setAttribute("reservations", Factory.getInstance().getDataRepository().getReservations(date));
+//        String stringDate = request.getParameter("date");
+//        Date date;
+//        try {
+//            date = new SimpleDateFormat("yyyy-mm-dd").parse(stringDate);
+//        } catch (ParseException e) {
+//            date = null;
+//        }
+//        request.setAttribute("reservations", Factory.getInstance().getDataRepository().getReservations(date));
         return super.execute(request); //To change body of generated methods, choose Tools | Templates.
     }
 
