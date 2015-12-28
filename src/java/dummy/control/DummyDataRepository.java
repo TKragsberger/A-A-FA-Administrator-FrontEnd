@@ -50,8 +50,6 @@ public class DummyDataRepository implements DataRepository {
     private DummyAsembler asembler = new DummyAsembler();
 
     public DummyDataRepository() {
-        Collection<Reservation> departure1Reservaions = new ArrayList<>();
-        Collection<Reservation> departure2Reservaions = new ArrayList<>();
         Date date1 = parseDate("2014-02-14");
         Date date2 = parseDate("2014-02-23");
         Date date3 = parseDate("2015-03-15");
@@ -85,13 +83,13 @@ public class DummyDataRepository implements DataRepository {
         new Route(1, "a", "b", 50.00, 40);
         new Route(2, "a", "c", 75.00, 20);
         
-        departure1Reservaions.add(reservation1);
-        departure1Reservaions.add(reservation3);
-        departure2Reservaions.add(reservation2);
-        
         //Departure(long id, Date date, long routeId, Collection<Reservation> reservations, int currentPassengers, int currentVehicles)
-        new Departure(1, date3, 1, departure1Reservaions, 100, 15, 0);
-        new Departure(2, date3, 2, departure2Reservaions, 98, 17, 0);
+        Departure departure1 = new Departure(1, date3, 1, 100, 15, 0);
+        Departure departure2 = new Departure(2, date3, 2, 98, 17, 0);
+        departure1.addReservation(reservation1);
+        departure1.addReservation(reservation3);
+        departure2.addReservation(reservation2);
+        
     }
 
     public static Date parseDate(String date) {

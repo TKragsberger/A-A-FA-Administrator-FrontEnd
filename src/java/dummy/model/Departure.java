@@ -1,5 +1,6 @@
 package dummy.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -28,11 +29,11 @@ public class Departure {
     private int currentVehicles;
     private int currentLargeVehicles;
 
-    public Departure(long id, Date date, long routeId, Collection<Reservation> reservations, int currentPassengers, int currentVehicles, int currentLargeVehicles) {
+    public Departure(long id, Date date, long routeId, int currentPassengers, int currentVehicles, int currentLargeVehicles) {
         this.id = id;
         this.date = date;
         this.routeId = routeId;
-        this.reservations = reservations;
+        this.reservations = new ArrayList<>();
         this.currentPassengers = currentPassengers;
         this.currentVehicles = currentVehicles;
         this.currentLargeVehicles = currentLargeVehicles;
@@ -93,5 +94,9 @@ public class Departure {
     
     public void setCurrentLargeVehicles(int currentLargeVehicles){
         this.currentLargeVehicles = currentLargeVehicles;
+    }
+    
+    public void addReservation(Reservation reservation){
+        this.reservations.add(reservation);
     }
 }
