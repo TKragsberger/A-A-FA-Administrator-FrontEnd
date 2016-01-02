@@ -84,8 +84,8 @@ public class DummyDataRepository implements DataRepository {
         new Route(2, "a", "c", 75.00, 20);
         
         //Departure(long id, Date date, long routeId, Collection<Reservation> reservations, int currentPassengers, int currentVehicles)
-        Departure departure1 = new Departure(1, date3, 1, 100, 15, 0);
-        Departure departure2 = new Departure(2, date3, 2, 98, 17, 0);
+        Departure departure1 = new Departure(1, date1, 1, 100, 15, 0);
+        Departure departure2 = new Departure(2, date2, 2, 98, 17, 0);
         departure1.addReservation(reservation1);
         departure1.addReservation(reservation3);
         departure2.addReservation(reservation2);
