@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Hello World! this is the master jsp</h1>
+        <ul>
+            <li><a href="FrontController?command=view-depature">Departure</a></li>
+            <li><a href="FrontController?command=view-reservations">Reservation</a></li>
+
+        </ul>
     </body>
 </html>

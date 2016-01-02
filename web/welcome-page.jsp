@@ -14,8 +14,8 @@
     <body>
         <h1>Hello World! this is the welcome page</h1>
         <ul>
-            <li><a href="FrontController?command=view-depature">Departure</a></li>
-            <li><a href="FrontController?command=view-reservations">Reservation</a></li>
+            <li><a href="FrontController?command=go-to-departure">Departure</a></li>
+            <li><a href="FrontController?command=go-to-reservations">Reservation</a></li>
 
         </ul>
     </body>
