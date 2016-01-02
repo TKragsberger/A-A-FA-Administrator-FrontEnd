@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +15,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World! reservations summary page</h1>
+        <h1>Reservations summary page</h1>
+        <c:forEach var="reservations" items="${requestScope.reservations}">
+        <li>
+            <a href="" id="${reservations.id}">
+            ${reservations.firstName} ${reservations.lastName} ${reservations.email} ${reservations.ticketType} ${reservations.routeId}
+            </a><br>
+        </li>
+        </c:forEach>
     </body>
 </html>
