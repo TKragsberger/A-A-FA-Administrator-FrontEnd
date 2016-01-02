@@ -1,7 +1,9 @@
 package servlets;
 
 import commands.Command;
+import commands.CreateDepartureCommand;
 import commands.DepartureDetailCommand;
+import commands.ListDeparturesCommand;
 import commands.ListReservationsCommand;
 import commands.ReservationDetailCommand;
 import commands.ShipDetailCommand;
@@ -27,7 +29,8 @@ public class Factory {
         commands.put("start-up", new StartUpCommand("/welcome-page.jsp"));
         commands.put("main", new TargetCommand("/administrator/main-page.jsp"));
         commands.put("view-ship", new ShipDetailCommand("/administrator/ship-detail-page.jsp"));
-        commands.put("go-to-departure", new TargetCommand("/administrator/departure-page.jsp"));
+        commands.put("create-departure", new CreateDepartureCommand("welcome-page.jsp"));
+        commands.put("go-to-departure", new ListDeparturesCommand("/administrator/departure-page.jsp"));
         commands.put("view-departure", new DepartureDetailCommand("/administrator/departure-detail-page.jsp"));
         commands.put("go-to-reservations", new TargetCommand("/administrator/reservation-page.jsp"));
         commands.put("view-reservations", new ListReservationsCommand("/administrator/reservation-summary-page.jsp"));

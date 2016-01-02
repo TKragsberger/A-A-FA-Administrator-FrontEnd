@@ -15,6 +15,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <h1>Reservation page</h1>
         <form action="FrontController" method="POST">
             <div>Get reservations for specifik date</div>
             <input name="date" placeholder="Date">

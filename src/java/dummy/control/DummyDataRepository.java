@@ -252,4 +252,9 @@ public class DummyDataRepository implements DataRepository {
         return asembler.createDepartureSummaries(Departure.list());
     }
 
+    @Override
+    public void createDeparture(DepartureDetail departure) {
+        new Departure(departure.getId(), departure.getDate(), departure.getRouteId(), departure.getCurrentPassengers(), departure.getCurrentVehicles(), departure.getCurrentLargeVehicles());
+    }
+
 }

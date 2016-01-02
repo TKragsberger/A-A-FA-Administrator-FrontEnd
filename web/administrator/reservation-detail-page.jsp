@@ -20,5 +20,9 @@
         <div>Price: ${reservation.price}</div>
         <div>TicketType: ${reservation.ticketType}</div>
         <div>routeId: ${reservation.routeId}</div>
+        
+        <form action="FrontController" method="POST">
+            <button type="submit" name="command" value="start-up">Back to frontpage</button>
+        </form>
     </body>
 </html>

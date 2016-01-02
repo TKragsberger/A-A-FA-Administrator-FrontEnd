@@ -190,6 +190,13 @@ public class DummyAsembler {
     
     public static DepartureDetail createDepartureDetail(Departure departure){
         Collection<ReservationSummary> rs = createReservationSummaries(departure.getReservations());
-        return new DepartureDetail(departure.getId(), departure.getDate(), departure.getRouteId(), departure.getCurrentPassengers(), departure.getCurrentVehicles(), departure.getCurrentLargeVehicles());
+        DepartureDetail d = new DepartureDetail(departure.getId(), departure.getDate(), departure.getRouteId());
+        d.addPassengers(departure.getCurrentPassengers());
+        d.addVehicles(departure.getCurrentVehicles());
+        d.addLargeVehicles(departure.getCurrentLargeVehicles());
+        for(ReservationSummary r : rs){
+            d.addReservation(r);
+        }
+        return d;
     }
 }
