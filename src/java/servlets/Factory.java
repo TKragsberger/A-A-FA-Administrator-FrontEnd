@@ -3,6 +3,7 @@ package servlets;
 import commands.Command;
 import commands.DepartureDetailCommand;
 import commands.ListReservationsCommand;
+import commands.ReservationDetailCommand;
 import commands.ShipDetailCommand;
 import commands.StartUpCommand;
 import commands.TargetCommand;
@@ -30,6 +31,7 @@ public class Factory {
         commands.put("view-departure", new DepartureDetailCommand("/administrator/departure-detail-page.jsp"));
         commands.put("go-to-reservations", new TargetCommand("/administrator/reservation-page.jsp"));
         commands.put("view-reservations", new ListReservationsCommand("/administrator/reservation-summary-page.jsp"));
+        commands.put("view-reservation", new ReservationDetailCommand("/administrator/reservation-detail-page.jsp"));
     }
     
     public DummyDataRepository getDataRepository() {

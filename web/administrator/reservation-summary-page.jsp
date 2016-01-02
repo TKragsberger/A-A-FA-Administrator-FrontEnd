@@ -18,9 +18,12 @@
         <h1>Reservations summary page</h1>
         <c:forEach var="reservations" items="${requestScope.reservations}">
         <li>
-            <a href="" id="${reservations.id}">
-            ${reservations.firstName} ${reservations.lastName} ${reservations.email} ${reservations.ticketType} ${reservations.routeId}
-            </a><br>
+            <form action="FrontController" method="POST">
+                <input name="id" value="${reservations.id}"><br>
+                ${reservations.firstName} ${reservations.lastName} ${reservations.email} ${reservations.ticketType} ${reservations.route}
+                <button type="submit" name="command" value="view-reservation" >Get reservations</button>
+                <br>
+            </form>
         </li>
         </c:forEach>
     </body>
